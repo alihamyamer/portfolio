@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import type { Period } from '@/lib/activity-providers/types';
 import { getStravaActivities } from '@/lib/activity-providers/strava';
-import { getGarminActivities } from '@/lib/activity-providers/garmin';
 import { getValidStravaToken } from '@/lib/strava-auth';
 
 const VALID_PERIODS: Period[] = ['last_4_weeks', 'last_90_days', 'ytd'];
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -30,6 +31,11 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  const garminData = await getGarminActivities(period, year);
-  return NextResponse.json(garminData);
+  return NextResponse.json({
+    connected: false,
+    source: 'strava',
+    totalSeconds: 0,
+    bySport: { cycling: 0, running: 0, swimming: 0, other: 0 },
+    monthly: [],
+  });
 }

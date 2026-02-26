@@ -8,7 +8,6 @@ import LiveIndicator from '@/components/dashboard/LiveIndicator';
 import TotalVolumeCard from '@/components/dashboard/TotalVolumeCard';
 import UpcomingRacesCard from '@/components/dashboard/UpcomingRacesCard';
 import MonthlyVolumeCard from '@/components/dashboard/MonthlyVolumeCard';
-import ConnectStravaButton from '@/components/dashboard/ConnectStravaButton';
 import { races } from '@/data/races';
 import type { Period } from '@/lib/activity-providers/types';
 import type { ActivitiesResponse } from '@/lib/activity-providers/types';
@@ -75,7 +74,6 @@ function DashboardContent() {
               onPeriodChange={setPeriod}
               onYearChange={setYear}
             />
-            <ConnectStravaButton connected={!!data?.connected} />
           </div>
         </div>
 
