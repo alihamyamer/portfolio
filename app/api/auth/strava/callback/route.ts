@@ -22,9 +22,8 @@ export async function GET(request: NextRequest) {
 
   const clientId = process.env.STRAVA_CLIENT_ID;
   const clientSecret = process.env.STRAVA_CLIENT_SECRET;
-  const redirectUri = process.env.STRAVA_REDIRECT_URI;
 
-  if (!clientId || !clientSecret || !redirectUri) {
+  if (!clientId || !clientSecret) {
     return NextResponse.redirect(
       new URL('/dashboard?error=config', request.url)
     );
@@ -38,7 +37,6 @@ export async function GET(request: NextRequest) {
       client_secret: clientSecret,
       code,
       grant_type: 'authorization_code',
-      redirect_uri: redirectUri,
     }),
   });
 
