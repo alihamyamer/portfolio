@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { refreshStravaToken } from '@/lib/strava-auth';
+import { getValidStravaToken } from '@/lib/strava-auth';
 
 export async function POST() {
-  const accessToken = await refreshStravaToken();
+  const accessToken = await getValidStravaToken();
 
   if (!accessToken) {
     return NextResponse.json(
