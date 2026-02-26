@@ -1,12 +1,15 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import type { VolumeBySport } from '@/lib/activity-providers/types';
+import { useAnimatedNumber } from '@/lib/useAnimatedNumber';
 
-function formatDuration(seconds: number): string {
-  const h = Math.floor(seconds / 3600);
-  const m = Math.floor((seconds % 3600) / 60);
-  if (h > 0) return `${h}h ${m}m`;
-  return `${m}m`;
+function AnimatedDuration({ seconds }: { seconds: number }) {
+  const animated = useAnimatedNumber(seconds, 1400);
+  const h = Math.floor(animated / 3600);
+  const m = Math.floor((animated % 3600) / 60);
+  if (h > 0) return <>{h}h {m}m</>;
+  return <>{m}m</>;
 }
 
 interface TotalVolumeCardProps {
@@ -20,7 +23,13 @@ export default function TotalVolumeCard({
   bySport,
   year,
 }: TotalVolumeCardProps) {
-  const totalHours = totalSeconds / 3600;
+  const animatedHours = useAnimatedNumber(totalSeconds / 3600, 1600);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setVisible(true), 100);
+    return () => clearTimeout(t);
+  }, []);
 
   const sports = [
     { label: 'CYCLING', seconds: bySport.cycling, color: 'text-amber-600' },
@@ -29,7 +38,7 @@ export default function TotalVolumeCard({
   ];
 
   return (
-    <div className="rounded-2xl bg-white border border-gray-200 p-6 shadow-sm">
+    <div className={`rounded-2xl bg-white border border-gray-200 p-6 shadow-sm transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       <div className="flex items-start justify-between mb-6">
         <h3 className="text-lg font-medium text-gray-500">
           Total Training Volume ({year})
@@ -49,7 +58,9 @@ export default function TotalVolumeCard({
         </svg>
       </div>
       <div className="mb-6">
-        <span className="text-5xl font-bold text-gray-900">{totalHours.toFixed(1)}</span>
+        <span className="text-5xl font-bold text-gray-900 tabular-nums">
+          {animatedHours.toFixed(1)}
+        </span>
         <span className="text-xl text-gray-400 ml-2">hours</span>
       </div>
       <div className="space-y-3">
@@ -59,7 +70,9 @@ export default function TotalVolumeCard({
             className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0"
           >
             <span className={`text-sm font-medium ${color}`}>{label}</span>
-            <span className="text-gray-700 font-medium">{formatDuration(seconds)}</span>
+            <span className="text-gray-700 font-medium tabular-nums">
+              <AnimatedDuration seconds={seconds} />
+            </span>
           </div>
         ))}
       </div>
