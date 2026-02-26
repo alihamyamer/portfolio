@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 30, 41, 59;
+  --background-start-rgb: 226, 232, 240;
+  --background-end-rgb: 226, 232, 240;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior-y: smooth;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced smooth scrolling for all scrollable elements */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Dashboard theme - slightly darker grey with green accents */
+.dashboard-theme {
+  --dashboard-bg: #e2e8f0;
+  --dashboard-accent: #16a34a;
+  --dashboard-card: #ffffff;
+  --dashboard-text: #1e293b;
+  --dashboard-text-muted: #64748b;
+  --dashboard-live: #16a34a;
+}
+
+.dashboard-theme {
+  background-color: var(--dashboard-bg);
+  background-image: 
+    linear-gradient(rgba(22, 163, 74, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 163, 74, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: var(--dashboard-text);
+}
