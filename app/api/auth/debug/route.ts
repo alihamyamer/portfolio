@@ -2,14 +2,24 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
+  const clientId = process.env.STRAVA_CLIENT_ID;
   const redirectUri = `${url.protocol}//${url.host}/api/auth/strava/callback`;
 
+  const params = new URLSearchParams({
+    client_id: clientId || '',
+    redirect_uri: redirectUri,
+    response_type: 'code',
+    scope: 'activity:read_all,profile:read_all',
+    approval_prompt: 'auto',
+  });
+
+  const fullStravaUrl = `https://www.strava.com/oauth/authorize?${params.toString()}`;
+
   return NextResponse.json({
-    requestUrl: request.url,
-    protocol: url.protocol,
-    host: url.host,
+    clientId,
+    clientIdLength: clientId?.length,
     redirectUri,
-    forwardedProto: request.headers.get('x-forwarded-proto'),
-    forwardedHost: request.headers.get('x-forwarded-host'),
+    fullStravaUrl,
+    host: url.host,
   });
 }
