@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import UpcomingRacesCard from '@/components/dashboard/UpcomingRacesCard';
+import RacePhoto from '@/components/dashboard/RacePhoto';
 import { races } from '@/data/races';
 
 export default function RacesPage() {
@@ -13,22 +13,7 @@ export default function RacesPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <UpcomingRacesCard races={races} />
-
-          <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
-            <Image
-              src="/images/ironman-finish.png"
-              alt="Ironman 70.3 Victoria finish — May 2025"
-              width={800}
-              height={1000}
-              className="w-full h-auto object-cover"
-              priority
-            />
-            <div className="bg-white px-5 py-3">
-              <p className="text-sm text-gray-500">
-                Ironman 70.3 Victoria &mdash; May 2025
-              </p>
-            </div>
-          </div>
+          <RacePhoto />
         </div>
       </div>
     </DashboardLayout>
