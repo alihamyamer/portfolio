@@ -22,20 +22,37 @@ export default function UpcomingRacesCard({ races }: UpcomingRacesCardProps) {
       </h3>
       <div className="space-y-3">
         {races.map((race, i) => (
-          <div
+          <a
             key={race.id}
-            className="rounded-xl bg-gray-50 border border-gray-200 p-4 transition-all duration-500"
+            href={race.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-xl bg-gray-50 border border-gray-200 p-4 transition-all duration-500 hover:border-green-300 hover:bg-green-50/50 group"
             style={{
               opacity: visible ? 1 : 0,
               transform: visible ? 'translateX(0)' : 'translateX(-12px)',
               transitionDelay: `${300 + i * 120}ms`,
             }}
           >
-            <div className="font-medium text-gray-900">{race.name}</div>
-            <div className="text-sm text-gray-500 mt-1">
-              {race.date} • {race.location}
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="font-medium text-gray-900 group-hover:text-green-700 transition-colors">
+                  {race.name}
+                </div>
+                <div className="text-sm text-gray-500 mt-1">
+                  {race.date} &bull; {race.location}
+                </div>
+              </div>
+              <svg
+                className="w-4 h-4 text-gray-300 group-hover:text-green-500 transition-colors flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
