@@ -36,7 +36,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-28">
       <PageTransition className="max-w-2xl mx-auto px-4 py-12">
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
           Get in Touch

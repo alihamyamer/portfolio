@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import '../styles/globals.css';
 import Navigation from '@/components/Navigation';
 import SmoothScroll from '@/components/SmoothScroll';
+import CommandPaletteProvider from '@/components/CommandPaletteProvider';
 
 export const metadata: Metadata = {
   title: 'ali-amer',
@@ -15,8 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-slate-200 text-slate-800">
+      <body className="min-h-screen bg-slate-950 text-slate-300">
         <SmoothScroll />
+        <CommandPaletteProvider />
         <Navigation />
         {children}
       </body>

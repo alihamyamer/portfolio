@@ -56,7 +56,7 @@ function DashboardContent() {
 
   return (
     <DashboardLayout>
-      <PageTransition className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <PageTransition className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
@@ -117,7 +117,7 @@ function DashboardContent() {
 
 export default function DashboardPage() {
   return (
-    <Suspense fallback={<div className="dashboard-theme min-h-screen pt-16 flex items-center justify-center text-gray-400">Loading...</div>}>
+    <Suspense fallback={<div className="dashboard-theme min-h-screen pt-28 flex items-center justify-center text-slate-500">Loading...</div>}>
       <DashboardContent />
     </Suspense>
   );

@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 30, 41, 59;
-  --background-start-rgb: 226, 232, 240;
-  --background-end-rgb: 226, 232, 240;
+  --foreground-rgb: 248, 250, 252;
+  --background-start-rgb: 2, 6, 23;
+  --background-end-rgb: 2, 6, 23;
 }
 
 html {
@@ -24,21 +24,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Dashboard theme - slightly darker grey with green accents */
+/* Dashboard theme - dark slate with green accents */
 .dashboard-theme {
-  --dashboard-bg: #e2e8f0;
-  --dashboard-accent: #16a34a;
-  --dashboard-card: #ffffff;
-  --dashboard-text: #1e293b;
-  --dashboard-text-muted: #64748b;
-  --dashboard-live: #16a34a;
+  --dashboard-bg: #020617;
+  --dashboard-accent: #22c55e;
+  --dashboard-card: rgba(15, 23, 42, 0.5);
+  --dashboard-text: #f8fafc;
+  --dashboard-text-muted: #94a3b8;
+  --dashboard-live: #22c55e;
 }
 
 .dashboard-theme {
   background-color: var(--dashboard-bg);
   background-image: 
-    linear-gradient(rgba(22, 163, 74, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(22, 163, 74, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
   color: var(--dashboard-text);
 }
