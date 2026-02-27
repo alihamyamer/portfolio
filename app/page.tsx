@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import PageTransition from '@/components/PageTransition';
 
 export default function Home() {
   return (
     <div className="min-h-screen pt-16 flex items-center justify-center">
-      <div className="text-center max-w-2xl px-4">
+      <PageTransition className="text-center max-w-2xl px-4">
         <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
           ali-amer
         </h1>
@@ -27,7 +28,7 @@ export default function Home() {
             Training Dashboard
           </Link>
         </div>
-      </div>
+      </PageTransition>
     </div>
   );
 }

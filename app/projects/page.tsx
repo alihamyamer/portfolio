@@ -1,10 +1,11 @@
 import { projects } from '@/data/projects';
 import ProjectsGrid from '@/components/ProjectsGrid';
+import PageTransition from '@/components/PageTransition';
 
 export default function ProjectsPage() {
   return (
     <div className="min-h-screen pt-16">
-      <div className="container mx-auto px-4 py-12 max-w-7xl">
+      <PageTransition className="container mx-auto px-4 py-12 max-w-7xl">
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 text-center">
           Projects
         </h1>
@@ -12,7 +13,7 @@ export default function ProjectsPage() {
           A collection of projects showcasing my skills and experience in software development.
         </p>
         <ProjectsGrid projects={projects} />
-      </div>
+      </PageTransition>
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
+import PageTransition from '@/components/PageTransition';
 import TimePeriodFilters from '@/components/dashboard/TimePeriodFilters';
 import LiveIndicator from '@/components/dashboard/LiveIndicator';
 import TotalVolumeCard from '@/components/dashboard/TotalVolumeCard';
@@ -55,7 +56,7 @@ function DashboardContent() {
 
   return (
     <DashboardLayout>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <PageTransition className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
@@ -109,7 +110,7 @@ function DashboardContent() {
             year={year}
           />
         </div>
-      </div>
+      </PageTransition>
     </DashboardLayout>
   );
 }

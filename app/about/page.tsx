@@ -1,7 +1,9 @@
+import PageTransition from '@/components/PageTransition';
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen pt-16">
-      <div className="max-w-4xl mx-auto px-4 py-12">
+      <PageTransition className="max-w-4xl mx-auto px-4 py-12">
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8">
           About
         </h1>
@@ -132,7 +134,7 @@ export default function AboutPage() {
             </div>
           </section>
         </div>
-      </div>
+      </PageTransition>
     </div>
   );
 }
