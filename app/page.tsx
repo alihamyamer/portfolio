@@ -5,13 +5,13 @@ export default function Home() {
   return (
     <div className="min-h-screen pt-28 flex items-center justify-center">
       <PageTransition className="text-center max-w-2xl px-4">
-        <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
+        <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
           ali-amer
         </h1>
-        <p className="text-xl text-slate-600 mb-4">
+        <p className="text-xl text-white mb-4">
           Software developer, endurance athlete, and automation enthusiast.
         </p>
-        <p className="text-lg text-slate-500 mb-8">
+        <p className="text-lg text-white/80 mb-8">
           I build tools and applications that solve real problems. Currently training for an Ironman while shipping code.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
