@@ -64,7 +64,7 @@ function DashboardContent() {
               source={data?.connected ? data.source : null}
               lastUpdated={data?.lastUpdated}
             />
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
+            <h1 className="text-3xl md:text-4xl font-bold text-white mt-2">
               Training Dashboard
             </h1>
           </div>
@@ -79,7 +79,7 @@ function DashboardContent() {
         </div>
 
         {loading && (
-          <div className="mb-6 p-4 rounded-xl bg-white border border-gray-200 text-gray-400 text-sm shadow-sm">
+          <div className="mb-6 p-4 rounded-xl bg-white/5 border border-white/10 text-white/50 text-sm shadow-sm">
             Loading activities...
           </div>
         )}
@@ -117,7 +117,7 @@ function DashboardContent() {
 
 export default function DashboardPage() {
   return (
-    <Suspense fallback={<div className="dashboard-theme min-h-screen pt-28 flex items-center justify-center text-slate-500">Loading...</div>}>
+    <Suspense fallback={<div className="dashboard-theme min-h-screen pt-28 flex items-center justify-center text-white/70">Loading...</div>}>
       <DashboardContent />
     </Suspense>
   );

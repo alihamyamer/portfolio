@@ -38,9 +38,9 @@ export default function TotalVolumeCard({
   ];
 
   return (
-    <div className={`rounded-2xl bg-white border border-gray-200 p-6 shadow-sm transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+    <div className={`rounded-2xl bg-white/5 border border-white/10 p-6 shadow-sm transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       <div className="flex items-start justify-between mb-6">
-        <h3 className="text-lg font-medium text-gray-500">
+        <h3 className="text-lg font-medium text-white/60">
           Total Training Volume ({year})
         </h3>
         <svg
@@ -58,10 +58,10 @@ export default function TotalVolumeCard({
         </svg>
       </div>
       <div className="mb-6">
-        <span className="text-5xl font-bold text-gray-900 tabular-nums">
+        <span className="text-5xl font-bold text-white tabular-nums">
           {animatedHours.toFixed(1)}
         </span>
-        <span className="text-xl text-gray-400 ml-2">hours</span>
+        <span className="text-xl text-white/50 ml-2">hours</span>
       </div>
       <div className="space-y-3">
         {sports.map(({ label, seconds, color }) => (
@@ -70,7 +70,7 @@ export default function TotalVolumeCard({
             className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0"
           >
             <span className={`text-sm font-medium ${color}`}>{label}</span>
-            <span className="text-gray-700 font-medium tabular-nums">
+            <span className="text-white/80 font-medium tabular-nums">
               <AnimatedDuration seconds={seconds} />
             </span>
           </div>

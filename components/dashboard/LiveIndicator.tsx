@@ -8,7 +8,7 @@ interface LiveIndicatorProps {
 export default function LiveIndicator({ source, lastUpdated }: LiveIndicatorProps) {
   if (!source) {
     return (
-      <div className="flex items-center gap-2 text-gray-400 text-sm">
+      <div className="flex items-center gap-2 text-white/50 text-sm">
         <span className="inline-block w-2 h-2 rounded-full bg-gray-300" />
         Not connected
       </div>
@@ -24,10 +24,10 @@ export default function LiveIndicator({ source, lastUpdated }: LiveIndicatorProp
     : '--';
 
   return (
-    <div className="flex items-center gap-2 text-gray-600 text-sm">
+    <div className="flex items-center gap-2 text-white/70 text-sm">
       <span className="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse" />
       <span className="font-medium text-green-700">LIVE FROM {source.toUpperCase()}</span>
-      <span className="text-gray-400">UPDATED {time}</span>
+      <span className="text-white/50">UPDATED {time}</span>
     </div>
   );
 }

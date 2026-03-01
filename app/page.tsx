@@ -23,7 +23,7 @@ export default function Home() {
           </Link>
           <Link
             href="/dashboard"
-            className="bg-white text-slate-700 border border-slate-300 px-8 py-3 rounded-full hover:bg-slate-50 transition-colors font-medium text-lg inline-block"
+            className="bg-white/5 text-white/90 border border-white/20 px-8 py-3 rounded-full hover:bg-white/5 transition-colors font-medium text-lg inline-block"
           >
             Training Dashboard
           </Link>

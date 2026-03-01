@@ -31,10 +31,10 @@ export default function AutomationPage() {
   return (
     <div className="min-h-screen pt-28">
       <PageTransition className="max-w-4xl mx-auto px-4 py-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
           Automation
         </h1>
-        <p className="text-slate-500 mb-10 max-w-2xl">
+        <p className="text-white/70 mb-10 max-w-2xl">
           I automate the boring stuff so I can spend more time building and training. Here are some of the systems I've set up.
         </p>
 
@@ -42,30 +42,30 @@ export default function AutomationPage() {
           {automations.map((item) => (
             <div
               key={item.title}
-              className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6"
+              className="bg-white/5 rounded-2xl border border-white/10 shadow-sm p-6"
             >
               <div className="flex items-start justify-between mb-3">
-                <h2 className="text-xl font-bold text-slate-900">{item.title}</h2>
+                <h2 className="text-xl font-bold text-white">{item.title}</h2>
                 <span
                   className={`px-3 py-1 rounded-full text-xs font-medium ${
                     item.status === 'Active'
                       ? 'bg-green-50 text-green-700 border border-green-200'
                       : item.status === 'In Development'
                         ? 'bg-amber-50 text-amber-700 border border-amber-200'
-                        : 'bg-slate-100 text-slate-500 border border-slate-200'
+                        : 'bg-white/10 text-white/70 border border-white/10'
                   }`}
                 >
                   {item.status}
                 </span>
               </div>
-              <p className="text-slate-600 text-sm leading-relaxed mb-4">
+              <p className="text-white/80 text-sm leading-relaxed mb-4">
                 {item.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {item.tech.map((t) => (
                   <span
                     key={t}
-                    className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-medium"
+                    className="px-3 py-1 rounded-full bg-white/10 text-white/80 text-xs font-medium"
                   >
                     {t}
                   </span>

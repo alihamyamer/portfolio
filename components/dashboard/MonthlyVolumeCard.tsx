@@ -53,16 +53,16 @@ export default function MonthlyVolumeCard({ monthly, year }: MonthlyVolumeCardPr
   }, []);
 
   return (
-    <div className={`rounded-2xl bg-white border border-gray-200 p-6 shadow-sm transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+    <div className={`rounded-2xl bg-white/5 border border-white/10 p-6 shadow-sm transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="text-lg font-medium text-gray-500">
+          <h3 className="text-lg font-medium text-white/60">
             Monthly Training Volume
           </h3>
-          <p className="text-sm text-gray-400 mt-0.5">Breakdown by sport</p>
+          <p className="text-sm text-white/50 mt-0.5">Breakdown by sport</p>
         </div>
         <svg
-          className="w-6 h-6 text-gray-400"
+          className="w-6 h-6 text-white/50"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -76,7 +76,7 @@ export default function MonthlyVolumeCard({ monthly, year }: MonthlyVolumeCardPr
         </svg>
       </div>
       {monthly.length === 0 ? (
-        <div className="h-40 flex items-center justify-center text-gray-400 text-sm">
+        <div className="h-40 flex items-center justify-center text-white/50 text-sm">
           No data for {year}
         </div>
       ) : (
@@ -86,13 +86,13 @@ export default function MonthlyVolumeCard({ monthly, year }: MonthlyVolumeCardPr
             const widthPct = (totalSeconds / maxSeconds) * 100;
             return (
               <div key={month} className="flex items-center gap-3">
-                <span className="text-sm text-gray-500 w-12">
+                <span className="text-sm text-white/60 w-12">
                   {formatMonth(month)}
                 </span>
-                <div className="flex-1 h-6 bg-gray-100 rounded-lg overflow-hidden">
+                <div className="flex-1 h-6 bg-white/10 rounded-lg overflow-hidden">
                   <AnimatedBar widthPct={widthPct} delay={300 + i * 100} />
                 </div>
-                <span className="text-sm text-gray-700 w-16 text-right tabular-nums">
+                <span className="text-sm text-white/80 w-16 text-right tabular-nums">
                   <AnimatedHours hours={hours} />
                 </span>
               </div>

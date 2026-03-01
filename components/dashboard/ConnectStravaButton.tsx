@@ -24,7 +24,7 @@ export default function ConnectStravaButton({ connected }: ConnectStravaButtonPr
       <button
         type="button"
         disabled
-        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 text-gray-400 font-medium cursor-not-allowed text-sm"
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white/50 font-medium cursor-not-allowed text-sm"
         title="Garmin Connect API requires developer approval"
       >
         Connect Garmin (Coming soon)

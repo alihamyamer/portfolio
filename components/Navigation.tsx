@@ -41,7 +41,7 @@ export default function Navigation() {
                   className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                     isActive
                       ? 'bg-green-500/20 text-green-400'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                      : 'text-white/60 hover:text-slate-200 hover:bg-white/10/50'
                   }`}
                 >
                   {label}
@@ -54,7 +54,7 @@ export default function Navigation() {
           <div className="flex items-center gap-3">
             <button 
               onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
-              className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800/50 border border-slate-700/50 text-slate-400 text-xs font-medium hover:bg-slate-800 hover:text-slate-300 transition-colors cursor-pointer"
+              className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10/50 border border-slate-700/50 text-white/60 text-xs font-medium hover:bg-white/10 hover:text-white/50 transition-colors cursor-pointer"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

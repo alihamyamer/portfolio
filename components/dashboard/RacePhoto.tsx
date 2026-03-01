@@ -13,7 +13,7 @@ export default function RacePhoto() {
 
   return (
     <div
-      className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm transition-all duration-700 ease-out"
+      className="rounded-2xl overflow-hidden border border-white/10 shadow-sm transition-all duration-700 ease-out"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(24px)',
@@ -27,8 +27,8 @@ export default function RacePhoto() {
         className="w-full h-auto object-cover"
         priority
       />
-      <div className="bg-white px-5 py-3">
-        <p className="text-sm text-gray-500">
+      <div className="bg-white/5 px-5 py-3">
+        <p className="text-sm text-white/60">
           Ironman 70.3 Victoria &mdash; May 2025
         </p>
       </div>

@@ -33,7 +33,7 @@ export default function TimePeriodFilters({
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             period === value
               ? 'bg-green-600 text-white'
-              : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:text-gray-900'
+              : 'bg-white/5 text-white/70 border border-white/10 hover:bg-white/5 hover:text-white'
           }`}
         >
           {label}
@@ -42,7 +42,7 @@ export default function TimePeriodFilters({
       <select
         value={year}
         onChange={(e) => onYearChange(parseInt(e.target.value, 10))}
-        className="px-4 py-2 rounded-full bg-white text-gray-600 border border-gray-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-500/50"
+        className="px-4 py-2 rounded-full bg-white/5 text-white/70 border border-white/10 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-500/50"
       >
         {years.map((y) => (
           <option key={y} value={y}>
