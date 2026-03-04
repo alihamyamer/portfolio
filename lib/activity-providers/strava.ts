@@ -3,6 +3,8 @@ import type {
   ActivitiesResponse,
   VolumeBySport,
   MonthlyVolume,
+  ActivitySummary,
+  DailyActivities,
 } from './types';
 
 const STRAVA_API_BASE = 'https://www.strava.com/api/v3';
@@ -53,7 +55,7 @@ export async function getStravaActivities(
   year?: number
 ): Promise<ActivitiesResponse> {
   const { after, before } = getDateRange(period, year);
-  const activities: Array<{ type: string; moving_time: number; start_date: string }> = [];
+  const activities: ActivitySummary[] = [];
   let page = 1;
   const perPage = 200;
 
@@ -70,13 +72,28 @@ export async function getStravaActivities(
     const data = await res.json();
     if (!Array.isArray(data) || data.length === 0) break;
 
-    activities.push(
-      ...data.map((a: { type?: string; sport_type?: string; moving_time: number; start_date: string }) => ({
-        type: a.sport_type ?? a.type ?? 'Unknown',
-        moving_time: a.moving_time,
-        start_date: a.start_date,
-      }))
-    );
+    for (const a of data as Array<{
+      id?: number | string;
+      name?: string;
+      type?: string;
+      sport_type?: string;
+      moving_time: number;
+      start_date: string;
+      distance?: number;
+    }>) {
+      const rawType = a.sport_type ?? a.type ?? 'Unknown';
+      const sport = mapSportType(rawType);
+
+      activities.push({
+        id: String(a.id ?? `${a.start_date}-${a.moving_time}`),
+        name: a.name ?? rawType,
+        type: rawType,
+        sportType: sport,
+        movingTimeSeconds: a.moving_time,
+        distanceMeters: typeof a.distance === 'number' ? a.distance : undefined,
+        startDate: a.start_date,
+      });
+    }
 
     if (data.length < perPage) break;
     page++;
@@ -90,12 +107,13 @@ export async function getStravaActivities(
   };
 
   const monthlyMap = new Map<string, { total: number; bySport: VolumeBySport }>();
+  const dailyMap = new Map<string, ActivitySummary[]>();
 
   for (const a of activities) {
     const sport = mapSportType(a.type);
-    bySport[sport] += a.moving_time;
+    bySport[sport] += a.movingTimeSeconds;
 
-    const month = a.start_date.slice(0, 7); // YYYY-MM
+    const month = a.startDate.slice(0, 7); // YYYY-MM
     if (!monthlyMap.has(month)) {
       monthlyMap.set(month, {
         total: 0,
@@ -103,11 +121,17 @@ export async function getStravaActivities(
       });
     }
     const entry = monthlyMap.get(month)!;
-    entry.total += a.moving_time;
-    entry.bySport[sport] += a.moving_time;
+    entry.total += a.movingTimeSeconds;
+    entry.bySport[sport] += a.movingTimeSeconds;
+
+    const day = a.startDate.slice(0, 10); // YYYY-MM-DD
+    if (!dailyMap.has(day)) {
+      dailyMap.set(day, []);
+    }
+    dailyMap.get(day)!.push(a);
   }
 
-  const totalSeconds = activities.reduce((s, a) => s + a.moving_time, 0);
+  const totalSeconds = activities.reduce((s, a) => s + a.movingTimeSeconds, 0);
   const monthly: MonthlyVolume[] = Array.from(monthlyMap.entries())
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([month, { total, bySport }]) => ({
@@ -116,12 +140,20 @@ export async function getStravaActivities(
       bySport,
     }));
 
+  const daily: DailyActivities[] = Array.from(dailyMap.entries())
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([date, activitiesForDay]) => ({
+      date,
+      activities: activitiesForDay,
+    }));
+
   return {
     connected: true,
     source: 'strava',
     totalSeconds,
     bySport,
     monthly,
+    daily,
     lastUpdated: new Date().toISOString(),
   };
 }

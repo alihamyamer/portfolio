@@ -37,5 +37,6 @@ export async function GET(request: NextRequest) {
     totalSeconds: 0,
     bySport: { cycling: 0, running: 0, swimming: 0, other: 0 },
     monthly: [],
+    daily: [],
   });
 }

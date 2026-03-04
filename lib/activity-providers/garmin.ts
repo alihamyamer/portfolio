@@ -17,6 +17,7 @@ export async function getGarminActivities(
       other: 0,
     },
     monthly: [],
+    daily: [],
     lastUpdated: undefined,
   };
 }

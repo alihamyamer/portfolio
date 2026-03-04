@@ -9,6 +9,7 @@ import LiveIndicator from '@/components/dashboard/LiveIndicator';
 import TotalVolumeCard from '@/components/dashboard/TotalVolumeCard';
 import UpcomingRacesCard from '@/components/dashboard/UpcomingRacesCard';
 import MonthlyVolumeCard from '@/components/dashboard/MonthlyVolumeCard';
+import TrainingCalendar from '@/components/dashboard/TrainingCalendar';
 import { races } from '@/data/races';
 import type { Period } from '@/lib/activity-providers/types';
 import type { ActivitiesResponse } from '@/lib/activity-providers/types';
@@ -104,11 +105,12 @@ function DashboardContent() {
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 space-y-6">
           <MonthlyVolumeCard
             monthly={data?.monthly ?? []}
             year={year}
           />
+          <TrainingCalendar daily={data?.daily ?? []} />
         </div>
       </PageTransition>
     </DashboardLayout>

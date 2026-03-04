@@ -2,11 +2,17 @@ export type Period = 'last_4_weeks' | 'last_90_days' | 'ytd';
 
 export interface ActivitySummary {
   id: string;
+  name: string;
   type: string;
   sportType: string;
   movingTimeSeconds: number;
   distanceMeters?: number;
   startDate: string;
+}
+
+export interface DailyActivities {
+  date: string; // YYYY-MM-DD
+  activities: ActivitySummary[];
 }
 
 export interface VolumeBySport {
@@ -28,6 +34,7 @@ export interface ActivitiesResponse {
   totalSeconds: number;
   bySport: VolumeBySport;
   monthly: MonthlyVolume[];
+  daily: DailyActivities[];
   lastUpdated?: string;
 }
 
